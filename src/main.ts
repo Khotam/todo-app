@@ -15,6 +15,8 @@ async function bootstrap(): Promise<void> {
 
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
 
+  console.log('test husky & lint-staged');
+
   app.useGlobalFilters().useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
