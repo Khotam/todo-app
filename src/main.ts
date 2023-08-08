@@ -3,27 +3,24 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-
 import * as packageJson from '../package.json';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
   const version = packageJson.version;
-  const logger = new Logger('Branches-Vehicles');
+  const logger = new Logger('Todo-App');
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['debug'],
   });
 
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
 
-  app
-    .useGlobalFilters()
-    .useGlobalPipes(
-      new ValidationPipe({
-        whitelist: true,
-        forbidNonWhitelisted: true,
-      }),
-    )
+  app.useGlobalFilters().useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('REST API')
