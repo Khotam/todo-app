@@ -12,7 +12,7 @@ export const setup = async () => {
 
   return new DataSource({
     ...typeOrmModuleOptions,
-    entities: [path.join(__dirname, '../src/modules/**/*.entity{.ts,.js}')],
+    entities: [path.join(__dirname, '../src/resources/**/*.entity{.ts,.js}')],
     migrations: [path.join(__dirname, '../migrations/*.{ts,js}')],
   });
 };

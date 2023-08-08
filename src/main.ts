@@ -8,14 +8,12 @@ import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
   const version = packageJson.version;
-  const logger = new Logger('Branches-Vehicles');
+  const logger = new Logger('Todo-App');
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['debug'],
   });
 
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
-
-  console.log('test husky & lint-staged');
 
   app.useGlobalFilters().useGlobalPipes(
     new ValidationPipe({
